@@ -1,3 +1,10 @@
+/*
+Stored Procedure for loading data into the bronze schema
+-----------------------
+For executing:
+EXEC bronze.load_bronze;
+*/
+
 CREATE OR ALTER PROCEDURE bronze.load_bronze AS 
 BEGIN
     -- Declaring Variables to calculate query loading duration, and two variables to calculate the whole batch
