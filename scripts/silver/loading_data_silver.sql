@@ -1,6 +1,9 @@
 -- Removing Duplicated, nulls and whitespaces
 -- crm_cust_info TABLE
 
+PRINT '>> Truncating: silver.crm_cust_info';
+TRUNCATE TABLE silver.crm_cust_info;
+PRINT '>> Inserting Data into: silver.crm_cust_info';
 INSERT INTO silver.crm_cust_info (
 	cst_id,
 	cst_key,
@@ -36,6 +39,9 @@ FROM (
 
 -- crm_prd_info TABLE
 
+PRINT '>> Truncating: silver.crm_prd_info';
+TRUNCATE TABLE silver.crm_prd_info;
+PRINT '>> Inserting Data into: silver.crm_prd_info';
 INSERT INTO silver.crm_prd_info (
 	prd_id,
 	cat_id,
@@ -64,12 +70,15 @@ CAST(LEAD(prd_start_dt) OVER(PARTITION BY prd_key ORDER BY prd_start_dt) -1 AS D
 /* As we are having overlaying in the original prd_end_dt coloumn we created a new one by taking
  The leading start date minus one as en end date, also we removed the time as it's useless */ 
 FROM bronze.crm_prd_info;
-SELECT * FROM silver.crm_prd_info
+
 
 --------------
 
 -- silver.crm_sales_details
 
+PRINT '>> Truncating: silver.crm_sales_details';
+TRUNCATE TABLE silver.crm_sales_details;
+PRINT '>> Inserting Data into: silver.crm_sales_details';
 INSERT INTO silver.crm_sales_details (
 	sls_ord_num,
 	sls_prd_key,
@@ -108,6 +117,9 @@ FROM bronze.crm_sales_details;
 
 -- silver.erp_cust_az12
 
+PRINT '>> Truncating: silver.erp_cust_az12';
+TRUNCATE TABLE silver.erp_cust_az12;
+PRINT '>> Inserting Data into: silver.erp_cust_az12';
 INSERT INTO silver.erp_cust_az12 (
 	cid,
 	bdate,
@@ -129,6 +141,9 @@ FROM bronze.erp_cust_az12;
 
 -- silver.erp_loc_a101
 
+PRINT '>> Truncating: silver.erp_loc_a101';
+TRUNCATE TABLE silver.erp_loc_a101;
+PRINT '>> Inserting Data into: silver.erp_loc_a101';
 INSERT INTO silver.erp_loc_a101 (
 	cid,
 	cntry
@@ -145,6 +160,9 @@ FROM bronze.erp_loc_a101;
 
 -- silver.erp_px_cat_g1v2
 
+PRINT '>> Truncating: silver.erp_px_cat_g1v2';
+TRUNCATE TABLE silver.erp_px_cat_g1v2;
+PRINT '>> Inserting Data into: silver.erp_px_cat_g1v2';
 INSERT INTO silver.erp_px_cat_g1v2 (
 id,
 cat,
